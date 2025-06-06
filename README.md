@@ -59,9 +59,9 @@ PORT=3001
 NODE_ENV=development
 ```
 
-### Running the Application
+### Running the Application (Development)
 
-1. Start the development server:
+1. Start the backend server:
 ```bash
 npm run server
 ```
@@ -71,23 +71,32 @@ npm run server
 npm start
 ```
 
-The application will be available at:
+The application will be available locally at:
 - Frontend: http://localhost:3000
 - Backend API: http://localhost:3001
 
 ### Production Deployment
 
-1. Build the application:
+This project is deployed with the frontend on GitHub Pages and the backend on Render.
+
+- **Frontend (GitHub Pages):** Hosted at https://shivakarthik09.github.io/Hazelbot/
+- **Backend API (Render):** Hosted at https://hazelbot-backend.onrender.com/api
+
+To deploy updates:
+
+1. Build the frontend application:
 ```bash
 npm run build
 ```
 
-2. Deploy to GitHub Pages:
+2. Deploy the frontend to GitHub Pages:
 ```bash
 npm run deploy
 ```
 
-The application will be available at: https://shivakarthik09.github.io/Hazelbot
+Updates to the backend are automatically deployed by Render when you push changes to the `main` branch.
+
+*Note: The free tier on Render may cause the backend service to spin down after periods of inactivity. The first request to the backend URL will wake it up, which might cause a slight delay.*
 
 ## Project Structure
 
