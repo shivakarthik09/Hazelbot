@@ -1,120 +1,84 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { 
-  Box, 
-  Container, 
-  Typography, 
-  TextField, 
-  Button, 
-  Paper, 
-  Avatar,
-  Chip,
-  CircularProgress,
-  Snackbar,
-  Alert,
-  Tabs,
-  Tab,
-  AppBar,
-  ThemeProvider,
-  createTheme,
-  CssBaseline,
-  Card,
-  CardContent,
-  Grid,
-  IconButton,
-  Divider
-} from '@mui/material';
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
-import SendIcon from '@mui/icons-material/Send';
-import SmartToyIcon from '@mui/icons-material/SmartToy';
-import SettingsIcon from '@mui/icons-material/Settings';
-import ChatIcon from '@mui/icons-material/Chat';
+import React, { useEffect, useState, useRef } from 'react';
+import { BrowserRouter, useLocation, useNavigate, Routes, Route } from 'react-router-dom';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Avatar from '@mui/material/Avatar';
+import CircularProgress from '@mui/material/CircularProgress';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 import LocalCafeIcon from '@mui/icons-material/LocalCafe';
+import SmartToyIcon from '@mui/icons-material/SmartToy';
+import SendIcon from '@mui/icons-material/Send';
 import EventIcon from '@mui/icons-material/Event';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
+
 import localforage from 'localforage';
 import axios from 'axios';
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#795548', // Coffee brown
+      main: '#8B4513', // SaddleBrown, coffee color
     },
     secondary: {
-      main: '#8d6e63', // Lighter brown
-    },
-    background: {
-      default: '#f5f5f5',
-      paper: '#ffffff',
-    },
-  },
-  typography: {
-    fontFamily: '"Poppins", "Roboto", "Helvetica", "Arial", sans-serif',
-  },
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          borderRadius: 25,
-        },
-      },
-    },
-    MuiPaper: {
-      styleOverrides: {
-        root: {
-          borderRadius: 12,
-        },
-      },
+      main: '#D2B48C', // Tan, lighter coffee color
     },
   },
 });
 
-const API_URL = process.env.NODE_ENV === 'production' 
-  ? 'https://hazelbot-backend.onrender.com/api'
-  : 'http://localhost:3001/api';
+const API_URL = process.env.NODE_ENV === 'production'
+  ? 'https://hazelbot-backend.onrender.com/api' // Production backend API URL on Render
+  : 'http://localhost:3001/api'; // Development backend API URL
+
+// Log the API_URL to the console for debugging
+console.log('API_URL:', API_URL);
 
 const MenuCarousel = ({ menuData }) => {
-  if (!menuData) return null;
+  if (!menuData) return null; // Guard clause for empty menuData
+
+  // Assuming menuData has sections like hotDrinks, coldDrinks, foodItems, specialOffers
+  const sections = [
+    { title: 'Hot Drinks', items: menuData.hotDrinks },
+    { title: 'Cold Drinks', items: menuData.coldDrinks },
+    { title: 'Food Items', items: menuData.foodItems },
+    { title: 'Special Offers', items: menuData.specialOffers },
+  ];
 
   return (
-    <Box sx={{ mt: 2, mb: 2 }}>
-      <Typography variant="h6" gutterBottom>
-        Our Menu 🍵
-      </Typography>
-      <Grid container spacing={2}>
-        {Object.entries(menuData.categories).map(([category, data]) => (
-          <Grid item xs={12} key={category}>
-            <Card>
-              <CardContent>
-                <Typography variant="h6" color="primary" gutterBottom>
-                  {data.name}
-                </Typography>
-                <Grid container spacing={1}>
-                  {data.items.map((item) => (
-                    <Grid item xs={12} key={item.id}>
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <Box>
-                          <Typography variant="subtitle1">{item.name}</Typography>
-                          <Typography variant="body2" color="text.secondary">
-                            {item.description}
-                          </Typography>
-                        </Box>
-                        <Typography variant="subtitle1" color="primary">
-                          ${item.price.toFixed(2)}
-                        </Typography>
-                      </Box>
-                      <Divider sx={{ my: 1 }} />
-                    </Grid>
-                  ))}
-                </Grid>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+    <Box sx={{ my: 2, overflowX: 'auto' }}>
+      {sections.map((section, sectionIndex) => (
+        section.items && section.items.length > 0 && (
+          <Box key={sectionIndex} sx={{ mb: 2 }}>
+            <Typography variant="h6" gutterBottom>{section.title}</Typography>
+            <Box sx={{ display: 'flex' }}>
+              {section.items.map((item, itemIndex) => (
+                <Paper key={itemIndex} sx={{ p: 2, mr: 2, minWidth: 150 }}>
+                  <Typography variant="subtitle1" fontWeight="bold">{item.name}</Typography>
+                  <Typography variant="body2">{item.description}</Typography>
+                  {item.price && <Typography variant="body2">€{parseFloat(item.price).toFixed(2)}</Typography>}
+                  {item.sizes && (
+                    <Typography variant="body2">Sizes: {item.sizes.join(', ')}</Typography>
+                  )}
+                  {item.addOns && (
+                    <Typography variant="body2">Add-ons: {item.addOns.join(', ')}</Typography>
+                  )}
+                </Paper>
+              ))}
+            </Box>
+          </Box>
+        )
+      ))}
     </Box>
   );
 };
+
 
 const ChatInterface = () => {
   const [messages, setMessages] = useState([]);
@@ -123,32 +87,39 @@ const ChatInterface = () => {
   const [error, setError] = useState(null);
   const messagesEndRef = useRef(null);
 
-  // Load messages from local storage on component mount
   useEffect(() => {
-    localforage.getItem('chatMessages').then(savedMessages => {
-      if (Array.isArray(savedMessages)) {
-        setMessages(savedMessages);
-      } else {
-        setMessages([]);
+    // Load conversation history from local storage on initial load
+    const loadHistory = async () => {
+      try {
+        const history = await localforage.getItem('chatHistory');
+        if (history) {
+          setMessages(history);
+        }
+      } catch (err) {
+        console.error('Error loading chat history:', err);
       }
-    }).catch(err => {
-      console.error('Error loading messages from local storage:', err);
-      setMessages([]);
-    });
+    };
+
+    loadHistory();
   }, []);
 
-  // Save messages to local storage whenever they change
   useEffect(() => {
-    localforage.setItem('chatMessages', messages);
+    // Save conversation history to local storage whenever messages state changes
+    const saveHistory = async () => {
+      try {
+        await localforage.setItem('chatHistory', messages);
+      } catch (err) {
+        console.error('Error saving chat history:', err);
+      }
+    };
+
+    saveHistory();
+    scrollToBottom();
   }, [messages]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
 
   const sendMessage = async (messageToSend) => {
     const messageToProcess = messageToSend !== undefined ? messageToSend : input;
@@ -156,28 +127,32 @@ const ChatInterface = () => {
 
     const newMessage = { text: messageToProcess, sender: 'user' };
     setMessages([...messages, newMessage]);
-    
+
     // Clear the input only if the message came from the input field
     if (messageToSend === undefined) {
       setInput('');
     }
 
     try {
-      // Ensure the API call uses the full absolute URL
+      setIsTyping(true); // Indicate that the bot is typing
+      // Send message to the backend API
       const response = await axios.post(API_URL + '/chat', { message: messageToProcess, userId: 'testuser123' }); // Added userId as per server expectations
-      const botMessage = { text: response.data.response, sender: 'bot', quickReplies: response.data.quickReplies };
+      const botMessage = { text: response.data.response, sender: 'bot', quickReplies: response.data.quickReplies, menuData: response.data.menuData }; // Include menuData if returned
       setMessages(prevMessages => [...prevMessages, botMessage]);
     } catch (error) {
       setError('Failed to get response from the chatbot. Please try again.');
       console.error('Error sending message:', error);
       // Optionally add a message to the chat indicating the error
       setMessages(prevMessages => [...prevMessages, { text: "I'm currently having trouble connecting to my server. Please try again in a moment.", sender: 'bot' }]);
+    } finally {
+      setIsTyping(false); // Stop typing indicator
     }
   };
 
   const handleQuickReply = (reply) => {
     sendMessage(reply);
   };
+
 
   return (
     <Container maxWidth="sm" sx={{ height: '100vh', display: 'flex', flexDirection: 'column', py: 2 }}>
@@ -187,14 +162,14 @@ const ChatInterface = () => {
           HazelBot
         </Typography>
       </Box>
-      
-      <Paper 
-        elevation={3} 
-        sx={{ 
-          flex: 1, 
-          display: 'flex', 
-          flexDirection: 'column', 
-          p: 2, 
+
+      <Paper
+        elevation={3}
+        sx={{
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          p: 2,
           mb: 2,
           overflow: 'auto',
           backgroundColor: '#f5f5f5'
@@ -254,7 +229,7 @@ const ChatInterface = () => {
                   </Typography>
                 </Paper>
               </Box>
-              {message.menuData && <MenuCarousel menuData={message.menuData} />}
+               {message.menuData && <MenuCarousel menuData={message.menuData} />} {/* Render MenuCarousel if menuData exists */}
               {message.quickReplies && (
                 <Box sx={{
                   mt: 1,
@@ -314,9 +289,9 @@ const ChatInterface = () => {
         </Button>
       </Box>
 
-      <Snackbar 
-        open={!!error} 
-        autoHideDuration={6000} 
+      <Snackbar
+        open={!!error}
+        autoHideDuration={6000}
         onClose={() => setError(null)}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
@@ -329,17 +304,20 @@ const ChatInterface = () => {
 };
 
 const App = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
+  // We are removing react-router-dom routing for the TrainingPanel
+  // since it's not included in this deployment setup.
+  // If you add back the TrainingPanel and its route, uncomment the relevant code.
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Box sx={{ flexGrow: 1 }}>
+    <BrowserRouter basename="/Hazelbot"> {/* Wrap the app with BrowserRouter and specify basename */}
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        {/* Render your main component here */}
         <ChatInterface />
-      </Box>
-    </ThemeProvider>
+        {/* If you add back routing, use Routes and Route components here */}
+      </ThemeProvider>
+    </BrowserRouter>
   );
 };
 
-export default App; 
+export default App;
