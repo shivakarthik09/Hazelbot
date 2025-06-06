@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Hazelbot/static/css/main.f6c50730.css",
-    "main.js": "/Hazelbot/static/js/main.1f2833c5.js",
+    "main.js": "/Hazelbot/static/js/main.de9d1f8b.js",
     "index.html": "/Hazelbot/index.html",
     "main.f6c50730.css.map": "/Hazelbot/static/css/main.f6c50730.css.map",
-    "main.1f2833c5.js.map": "/Hazelbot/static/js/main.1f2833c5.js.map"
+    "main.de9d1f8b.js.map": "/Hazelbot/static/js/main.de9d1f8b.js.map"
   },
   "entrypoints": [
     "static/css/main.f6c50730.css",
-    "static/js/main.1f2833c5.js"
+    "static/js/main.de9d1f8b.js"
   ]
 }
