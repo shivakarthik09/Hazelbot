@@ -1,50 +1,51 @@
 # Common Good Harlem Chatbot
 
-A conversational AI chatbot for Common Good Harlem café, built with Node.js and React. The chatbot helps customers with menu information, ordering, reservations, and general inquiries about the café.
+A conversational AI chatbot for Common Good Harlem café, providing information about menu items, hours, events, and handling reservations.
 
-## 🌟 Features
+## Features
 
-### Menu & Ordering
-- Interactive menu display with categories (Hot Drinks, Cold Drinks, Food Items)
-- Real-time order management
-- Add items to cart with size options
-- Special add-ons for food items
-- Price calculation and order total
-- Order status tracking
+- **Menu & Ordering**
+  - View complete menu with prices
+  - Start new orders
+  - View order history
+  - Track order status
+  - Special offers and promotions
 
-### Café Information
-- Operating hours with busy period indicators
-- Location and directions
-- Contact information
-- Special offers and promotions
-- Holiday hours
+- **Café Information**
+  - Operating hours
+  - Location and directions
+  - Contact information
+  - Special events
+  - Reservation system
 
-### Events & Activities
-- Live Music Night (Fridays)
-- Poetry Night (Saturdays)
-- Community Meetup (Sundays)
-- Event registration
-- Special event discounts
+- **Events & Community**
+  - Live music nights
+  - Poetry readings
+  - Community meetups
+  - Event registration
+  - Special event details
 
-### Additional Features
-- Student discounts
-- Happy hour specials
-- DoorDash integration
-- Reservation system
-- Feedback collection
+- **Additional Features**
+  - Real-time order tracking
+  - Reservation management
+  - Special offers and discounts
+  - Student discounts
+  - Bring your own cup program
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
+
 - Node.js (v14 or higher)
 - npm (v6 or higher)
+- Git
 
 ### Installation
 
 1. Clone the repository:
 ```bash
-git clone [repository-url]
-cd silicon-chatbot
+git clone https://github.com/shivakarthik09/Hazelbot.git
+cd Hazelbot
 ```
 
 2. Install dependencies:
@@ -60,60 +61,92 @@ NODE_ENV=development
 
 ### Running the Application
 
-1. Start the server:
+1. Start the development server:
 ```bash
 npm run server
 ```
-The server will start on http://localhost:3001
 
-2. Start the frontend (in a new terminal):
+2. In a separate terminal, start the React development server:
 ```bash
 npm start
 ```
-The frontend will be available at http://localhost:3000
 
-## 📁 Project Structure
+The application will be available at:
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:3001
 
-```
-silicon-chatbot/
-├── server.js              # Main server file
-├── knowledgeBase.json     # Chatbot knowledge and responses
-├── package.json          # Project dependencies
-├── public/               # Static files
-├── src/                  # React frontend code
-│   ├── components/       # React components
-│   ├── hooks/           # Custom React hooks
-│   ├── styles/          # CSS styles
-│   └── App.js           # Main React component
-└── README.md            # Project documentation
+### Production Deployment
+
+1. Build the application:
+```bash
+npm run build
 ```
 
-## 💬 Chatbot Commands
+2. Deploy to GitHub Pages:
+```bash
+npm run deploy
+```
 
-### Menu & Ordering
-- "Show menu" - Display the complete menu
-- "Start order" - Begin a new order
-- "Add [item]" - Add an item to your order
-- "Check total" - View order total
-- "Complete order" - Finish and submit order
+The application will be available at: https://shivakarthik09.github.io/Hazelbot
 
-### Information
-- "Hours" - View operating hours
-- "Location" - Get café location and directions
-- "Contact" - View contact information
-- "Events" - See upcoming events
-- "Specials" - View current promotions
+## Project Structure
 
-## 🔧 Configuration
+```
+Hazelbot/
+├── public/
+│   ├── index.html
+│   └── assets/
+├── src/
+│   ├── components/
+│   │   ├── Chat.js
+│   │   ├── Menu.js
+│   │   └── Events.js
+│   ├── App.js
+│   └── index.js
+├── server.js
+├── knowledgeBase.json
+├── package.json
+└── README.md
+```
 
-The chatbot's responses and knowledge base can be modified in `knowledgeBase.json`. This file contains:
+## Chatbot Commands
+
+The chatbot understands various commands and intents:
+
+- **Menu Related**
+  - "Show menu"
+  - "What's on the menu?"
+  - "Start order"
+  - "View order history"
+
+- **Café Information**
+  - "What are your hours?"
+  - "Where are you located?"
+  - "How can I contact you?"
+  - "Tell me about your events"
+
+- **Events & Reservations**
+  - "Register for event"
+  - "Show upcoming events"
+  - "Make a reservation"
+  - "Cancel reservation"
+
+- **Special Offers**
+  - "What are today's specials?"
+  - "Tell me about happy hour"
+  - "Student discount information"
+  - "BYOC program details"
+
+## Configuration
+
+The chatbot's knowledge base can be modified in `knowledgeBase.json`. This file contains:
 - Menu items and prices
 - Operating hours
 - Event information
 - Special offers
-- Common responses
+- Reservation policies
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
@@ -121,15 +154,16 @@ The chatbot's responses and knowledge base can be modified in `knowledgeBase.jso
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 👥 Authors
+## Authors
 
-- Your Name - Initial work
+- **Shiva Karthik** - *Initial work* - [shivakarthik09](https://github.com/shivakarthik09)
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
-- Common Good Harlem for the menu and information
-- All contributors who have helped with the project 
+- Common Good Harlem café for providing the menu and information
+- React.js community for the amazing framework
+- All contributors who have helped improve the chatbot 
