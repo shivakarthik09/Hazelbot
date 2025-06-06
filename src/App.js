@@ -70,7 +70,9 @@ const theme = createTheme({
   },
 });
 
-const API_URL = 'http://localhost:3001';
+const API_URL = process.env.NODE_ENV === 'production' 
+  ? 'https://hazelbot-backend.onrender.com/api'
+  : 'http://localhost:3001/api';
 
 const MenuCarousel = ({ menuData }) => {
   if (!menuData) return null;
@@ -162,11 +164,7 @@ const ChatInterface = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:3001/api/chat', {
-        message: messageToProcess, // Use the message to process
-        userId: 'testuser123'
-      });
-
+      const response = await axios.post(API_URL + '/chat', { message: messageToProcess });
       const botMessage = { text: response.data.response, sender: 'bot', quickReplies: response.data.quickReplies };
       setMessages(prevMessages => [...prevMessages, botMessage]);
     } catch (error) {
