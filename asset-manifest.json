@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Hazelbot/static/css/main.f6c50730.css",
+    "main.js": "/Hazelbot/static/js/main.732c2a28.js",
+    "index.html": "/Hazelbot/index.html",
+    "main.f6c50730.css.map": "/Hazelbot/static/css/main.f6c50730.css.map",
+    "main.732c2a28.js.map": "/Hazelbot/static/js/main.732c2a28.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f6c50730.css",
+    "static/js/main.732c2a28.js"
+  ]
+}
