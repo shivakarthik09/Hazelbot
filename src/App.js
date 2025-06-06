@@ -34,7 +34,6 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import localforage from 'localforage';
 import axios from 'axios';
-import TrainingPanel from './components/TrainingPanel';
 
 const theme = createTheme({
   palette: {
@@ -151,7 +150,7 @@ const ChatInterface = () => {
     scrollToBottom();
   }, [messages]);
 
-  const handleSendMessage = async (messageToSend) => {
+  const sendMessage = async (messageToSend) => {
     const messageToProcess = messageToSend !== undefined ? messageToSend : input;
     if (messageToProcess.trim() === '') return;
 
@@ -164,17 +163,20 @@ const ChatInterface = () => {
     }
 
     try {
-      const response = await axios.post(API_URL + '/chat', { message: messageToProcess });
+      // Ensure the API call uses the full absolute URL
+      const response = await axios.post(API_URL + '/chat', { message: messageToProcess, userId: 'testuser123' }); // Added userId as per server expectations
       const botMessage = { text: response.data.response, sender: 'bot', quickReplies: response.data.quickReplies };
       setMessages(prevMessages => [...prevMessages, botMessage]);
     } catch (error) {
       setError('Failed to get response from the chatbot. Please try again.');
-      console.error('Error:', error);
+      console.error('Error sending message:', error);
+      // Optionally add a message to the chat indicating the error
+      setMessages(prevMessages => [...prevMessages, { text: "I'm currently having trouble connecting to my server. Please try again in a moment.", sender: 'bot' }]);
     }
   };
 
   const handleQuickReply = (reply) => {
-    handleSendMessage(reply);
+    sendMessage(reply);
   };
 
   return (
@@ -292,7 +294,7 @@ const ChatInterface = () => {
           placeholder="Type your message..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+          onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
           disabled={isTyping}
           sx={{
             '& .MuiOutlinedInput-root': {
@@ -303,7 +305,7 @@ const ChatInterface = () => {
         <Button
           variant="contained"
           color="primary"
-          onClick={() => handleSendMessage()}
+          onClick={() => sendMessage()}
           endIcon={<SendIcon />}
           disabled={isTyping}
           sx={{ minWidth: 100 }}
@@ -329,41 +331,12 @@ const ChatInterface = () => {
 const App = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [tabValue, setTabValue] = useState(0);
-
-  useEffect(() => {
-    if (location.pathname === '/train') {
-      setTabValue(1);
-    } else {
-      setTabValue(0);
-    }
-  }, [location]);
-
-  const handleTabChange = (event, newValue) => {
-    setTabValue(newValue);
-    navigate(newValue === 0 ? '/' : '/train');
-  };
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" color="default" elevation={0}>
-          <Tabs
-            value={tabValue}
-            onChange={handleTabChange}
-            indicatorColor="primary"
-            textColor="primary"
-            centered
-          >
-            <Tab icon={<ChatIcon />} label="Chat" />
-            <Tab icon={<SettingsIcon />} label="Training" />
-          </Tabs>
-        </AppBar>
-        <Routes>
-          <Route path="/" element={<ChatInterface />} />
-          <Route path="/train" element={<TrainingPanel />} />
-        </Routes>
+        <ChatInterface />
       </Box>
     </ThemeProvider>
   );
