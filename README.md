@@ -2,6 +2,48 @@
 
 A sophisticated conversational AI chatbot for Common Good Harlem café, designed to handle customer interactions, orders, and inquiries in a natural, barista-like manner.
 
+## Quick Start Guide
+
+### Prerequisites
+- Node.js >= 14.0.0
+- npm or yarn package manager
+- OpenRouter API key (get it from [OpenRouter](https://openrouter.ai/))
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/shivakarthik09/Chatbot_LLM.git
+cd Chatbot_LLM
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Create environment file:
+```bash
+# Create a .env file in the root directory
+touch .env
+```
+
+4. Add the following to your .env file:
+```
+PORT=3001
+NODE_ENV=development
+LLM_API_KEY=your_openrouter_api_key_here
+```
+
+5. Start the development server:
+```bash
+npm run dev
+```
+
+The application will be available at:
+- Frontend: http://localhost:3000
+- Backend: http://localhost:3001
+
 ## Project Overview
 
 This chatbot is built using a modern tech stack and implements a robust architecture for handling customer interactions, orders, and information requests. The system uses natural language processing through OpenRouter's LLM API and maintains context-aware conversations.
