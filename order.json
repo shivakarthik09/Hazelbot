@@ -1,0 +1,36 @@
+{
+  "order_flows": {
+    "signature_drinks": {
+      "response": "Our signature drinks are:\n\n☕ Hot Drinks:\n- Latte: Small: $3.50, Medium: $4.00, Large: $4.50\n- Cappuccino: Small: $3.00, Medium: $3.50, Large: $4.00\n\n🥤 Cold Drinks:\n- Iced Coffee: Small: $3.00, Medium: $3.50, Large: $4.00\n- Frappuccino: Small: $4.00, Medium: $4.50, Large: $5.00\n\nWould you like to try any of these?",
+      "quickReplies": ["Latte", "Cappuccino", "Iced Coffee", "Frappuccino", "See Full Menu"]
+    },
+    "complete_order": {
+      "response": "Your order is complete! Thank you for your order.",
+      "quickReplies": ["Start New Order", "View Menu", "Check Hours"]
+    },
+    "cancel_order": {
+      "response": "Your order has been cancelled. Would you like to start a new order?",
+      "quickReplies": ["Start New Order", "View Menu"]
+    },
+    "check_total": {
+      "response": "Your current total is $0.00. Would you like to add anything else before completing your order?",
+      "quickReplies": ["Add Another Item", "Complete Order", "Cancel Order"]
+    },
+    "add_item": {
+      "response": "What would you like to add to your order? You can say the name of any menu item.",
+      "quickReplies": ["Show Menu", "Complete Order", "Cancel Order"]
+    },
+    "new_order": {
+      "response": "Great! I've started a new order for you. What would you like to add to your order?",
+      "quickReplies": ["Show Menu", "Hot Drinks", "Cold Drinks", "Food", "Signature Drinks"]
+    },
+    "checkout": {
+      "response": "Ready to checkout! Payment options: Credit/Debit Cards, Apple Pay, Google Pay, Cash, Venmo. How would you like to pay?",
+      "quickReplies": ["Pay with Card", "Pay with Apple Pay", "Pay with Cash", "Cancel Order"]
+    },
+    "view_order": {
+      "response": "Current Order: No items yet. What would you like to do?",
+      "quickReplies": ["Add Another Item", "Checkout", "Cancel Order", "Show Menu"]
+    }
+  }
+} 

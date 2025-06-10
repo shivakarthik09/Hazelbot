@@ -23,23 +23,225 @@
     {"q": "Can I reserve a table?", "a": "We accept walk-ins only, but can help you find the best time to visit."},
     {"q": "How do I make a complaint?", "a": "You can call us at (917) 261-6996 or email feedback@commongoodharlem.org."}
   ],
-  "menu": {
-    "drinks": [
-      {"name": "Coffee", "sizes": ["Small", "Medium", "Large"], "price": {"Small": 3.5, "Medium": 4.0, "Large": 4.5}},
-      {"name": "Latte", "sizes": ["Small", "Medium", "Large"], "price": {"Small": 4.5, "Medium": 5.5, "Large": 6.5}},
-      {"name": "Cappuccino", "sizes": ["Small", "Medium", "Large"], "price": {"Small": 4.0, "Medium": 5.0, "Large": 6.0}},
-      {"name": "Matcha", "sizes": ["Small", "Medium", "Large"], "price": {"Small": 5.0, "Medium": 6.0, "Large": 7.0}}
-    ],
-    "coldDrinks": [
-      {"name": "Iced Coffee", "sizes": ["Medium", "Large"], "price": {"Medium": 4.0, "Large": 5.0}},
-      {"name": "Cold Brew", "sizes": ["Medium", "Large"], "price": {"Medium": 4.5, "Large": 5.5}}
-    ],
-    "food": [
-      {"name": "Croissant", "types": ["Plain", "Chocolate", "Almond"], "price": {"Plain": 3.5, "Chocolate": 4.0, "Almond": 4.5}},
-      {"name": "Avocado Toast", "basePrice": 8.0, "addons": ["Egg", "Smoked Salmon", "Feta Cheese"]},
-      {"name": "Breakfast Sandwich", "basePrice": 7.0, "meat": ["Bacon", "Sausage", "Ham"], "cheese": ["Cheddar", "Swiss", "No Cheese"]}
-    ]
-  },
+  "menu": [
+    {
+      "category": "Most Ordered",
+      "items": [
+        {
+          "name": "Turkey Bacon, Egg & Cheese",
+          "description": "Turkey bacon, egg, and cheese sandwich with your choice of bread (croissant, multigrain, bagel, etc.) and egg preparation style (fried, scrambled, poached...).",
+          "price": 12.49,
+          "options": {
+            "bread": ["Croissant", "Multigrain", "Bagel", "Sourdough"],
+            "eggPreparation": ["Fried", "Scrambled", "Poached"]
+          }
+        },
+        {
+          "name": "Matcha Latte Iced",
+          "description": "Matcha latte made with high-quality green tea powder; available in small or large sizes.",
+          "price": {
+            "Small": 6.25,
+            "Large": 7.25
+          },
+          "sizes": ["Small", "Large"]
+        },
+        {
+          "name": "Loaded Bagel",
+          "description": "Cream cheese, smoked salmon, tomato, and onion",
+          "price": 12.75
+        },
+        {
+          "name": "Egg & Cheese",
+          "description": "Egg sandwich with choice of bread and egg preparation. Bread options include croissant, sourdough, multigrain, bagel, and more. Eggs can be fried, scrambled...",
+          "price": 9.00,
+          "options": {
+            "bread": ["Croissant", "Sourdough", "Multigrain", "Bagel"],
+            "eggPreparation": ["Fried", "Scrambled", "Poached"]
+          }
+        },
+        {
+          "name": "Bagel with Cream Cheese",
+          "description": "A classic toasted bagel generously spread with smooth cream cheese",
+          "price": 5.25
+        },
+        {
+          "name": "Mocha",
+          "description": "Rich coffee mixed with chocolate. Available in small or large sizes.",
+          "price": {
+            "Small": 4.75,
+            "Large": 5.75
+          },
+          "sizes": ["Small", "Large"]
+        }
+      ]
+    },
+    {
+      "category": "Hot",
+      "items": [
+        {
+          "name": "Coffee",
+          "sizes": ["Small", "Medium", "Large"],
+          "price": {"Small": 3.5, "Medium": 4.0, "Large": 4.5}
+        },
+        {
+          "name": "Latte",
+          "sizes": ["Small", "Medium", "Large"],
+          "price": {"Small": 4.5, "Medium": 5.5, "Large": 6.5}
+        },
+        {
+          "name": "Cappuccino",
+          "sizes": ["Small", "Medium", "Large"],
+          "price": {"Small": 4.0, "Medium": 5.0, "Large": 6.0}
+        },
+        {
+          "name": "Matcha",
+          "sizes": ["Small", "Medium", "Large"],
+          "price": {"Small": 5.0, "Medium": 6.0, "Large": 7.0}
+        }
+      ]
+    },
+    {
+      "category": "Iced",
+      "items": [
+        {
+          "name": "Iced Coffee",
+          "sizes": ["Medium", "Large"],
+          "price": {"Medium": 4.0, "Large": 5.0}
+        },
+        {
+          "name": "Cold Brew",
+          "sizes": ["Medium", "Large"],
+          "price": {"Medium": 4.5, "Large": 5.5}
+        },
+        {
+          "name": "Matcha Latte Iced",
+          "description": "Matcha latte made with high-quality green tea powder; available in small or large sizes.",
+          "price": {
+            "Small": 6.25,
+            "Large": 7.25
+          },
+          "sizes": ["Small", "Large"]
+        }
+      ]
+    },
+    {
+      "category": "Tea",
+      "items": [
+        {
+          "name": "Black Tea",
+          "description": "Classic black tea, hot or iced.",
+          "price": 3.00,
+          "options": ["Hot", "Iced"]
+        },
+        {
+          "name": "Green Tea",
+          "description": "Refreshing green tea, hot or iced.",
+          "price": 3.00,
+          "options": ["Hot", "Iced"]
+        }
+      ]
+    },
+    {
+      "category": "Beverages",
+      "items": [
+        {
+          "name": "Orange Juice",
+          "description": "Freshly squeezed orange juice.",
+          "price": 4.00
+        },
+        {
+          "name": "Sparkling Water",
+          "description": "Bottled sparkling water.",
+          "price": 3.00
+        }
+      ]
+    },
+    {
+      "category": "Menu",
+      "items": [
+        {
+          "name": "Avocado Toast",
+          "basePrice": 8.00,
+          "addons": ["Egg", "Smoked Salmon", "Feta Cheese"],
+          "description": "Toasted bread topped with fresh avocado."
+        },
+        {
+          "name": "Breakfast Sandwich",
+          "basePrice": 7.00,
+          "meat": ["Bacon", "Sausage", "Ham"],
+          "cheese": ["Cheddar", "Swiss", "No Cheese"],
+          "description": "Customizable breakfast sandwich with your choice of meat and cheese."
+        },
+        {
+          "name": "Loaded Bagel",
+          "description": "Cream cheese, smoked salmon, tomato, and onion",
+          "price": 12.75
+        },
+        {
+          "name": "Egg & Cheese",
+          "description": "Egg sandwich with choice of bread and egg preparation. Bread options include croissant, sourdough, multigrain, bagel, and more. Eggs can be fried, scrambled...",
+          "price": 9.00,
+          "options": {
+            "bread": ["Croissant", "Sourdough", "Multigrain", "Bagel"],
+            "eggPreparation": ["Fried", "Scrambled", "Poached"]
+          }
+        },
+        {
+          "name": "Bagel with Cream Cheese",
+          "description": "A classic toasted bagel generously spread with smooth cream cheese",
+          "price": 5.25
+        },
+        {
+          "name": "Turkey Bacon, Egg & Cheese",
+          "description": "Turkey bacon, egg, and cheese sandwich with your choice of bread (croissant, multigrain, bagel, etc.) and egg preparation style (fried, scrambled, poached...).",
+          "price": 12.49,
+          "options": {
+            "bread": ["Croissant", "Multigrain", "Bagel", "Sourdough"],
+            "eggPreparation": ["Fried", "Scrambled", "Poached"]
+          }
+        }
+      ]
+    },
+    {
+      "category": "Pastry",
+      "items": [
+        {
+          "name": "Croissant",
+          "types": ["Plain", "Chocolate", "Almond"],
+          "price": {"Plain": 3.5, "Chocolate": 4.0, "Almond": 4.5},
+          "description": "Freshly baked croissant."
+        }
+      ]
+    },
+    {
+      "category": "Market",
+      "items": [
+        {
+          "name": "Local Honey",
+          "description": "Locally sourced honey.",
+          "price": 15.00
+        },
+        {
+          "name": "Coffee Beans (12oz)",
+          "description": "Bag of our signature coffee beans.",
+          "price": 18.00
+        }
+      ]
+    },
+    {
+      "category": "Extra Charges",
+      "items": [
+        {
+          "name": "Extra Shot of Espresso",
+          "price": 1.50
+        },
+        {
+          "name": "Alternative Milk (Almond/Oat)",
+          "price": 0.75
+        }
+      ]
+    }
+  ],
   "reservation": {
     "system": "walk-in only",
     "policy": "We accept walk-ins only, but can help you find the best time to visit."
@@ -83,34 +285,49 @@
   "technicalNotes": "All intents, sample utterances, needed data, follow-ups, and developer notes from the provided requirements are documented in the project README and knowledge base for future extensibility.",
   "intents": [
     {
-      "tag": "greeting",
-      "patterns": ["hi", "hello", "hey", "good morning", "good afternoon"],
-      "responses": ["Hi there! 👋 I'm HazelBot — your virtual barista at Common Good Harlem. Here to help you with drinks, events, or anything else. What would you like to do?"]
+      "tag": "menu",
+      "patterns": ["menu", "what's on the menu", "show me the menu", "what do you have", "what can I order"],
+      "responses": ["Here's our menu:", "Take a look at what we offer:", "Here's what we have available:"]
     },
     {
-      "tag": "location",
-      "patterns": ["where are you", "location", "address", "directions", "how to get there", "nearest location", "find you", "get directions", "your address"],
-      "responses": ["We're located at 2801 Frederick Douglass Boulevard, New York, NY 10039 📍 You can find us on Google Maps: https://maps.google.com/?q=2801+Frederick+Douglass+Boulevard+New+York+NY+10039 Need to call? Just tap: (917) 261-6996 We're easily accessible by: - Subway: A, B, C, D trains to 125th St - Bus: M2, M3, M4, M10 to 125th St - Parking available nearby"]
+      "tag": "order",
+      "patterns": ["order", "place an order", "start order", "I want to order", "can I order"],
+      "responses": ["Great! Let's start your order. What would you like to add?", "I'll help you place an order. What would you like?"]
+    },
+    {
+      "tag": "start_order",
+      "patterns": ["start order", "begin order", "new order", "place order"],
+      "responses": ["Let's start your order. What would you like to add?", "I'll help you place a new order. What would you like?"]
+    },
+    {
+      "tag": "view_order",
+      "patterns": ["view order", "show order", "my order", "current order", "what's in my order"],
+      "responses": ["Here's your current order:", "Let me show you what's in your order:"]
+    },
+    {
+      "tag": "signature_drinks",
+      "patterns": ["signature drinks", "special drinks", "house specials", "what's special"],
+      "responses": ["Here are our signature drinks:", "Let me tell you about our special drinks:"]
     },
     {
       "tag": "hours",
-      "patterns": ["hours", "open", "close", "schedule", "what time", "when do you open", "when do you close", "opening hours", "closing hours", "what are your hours"],
-      "responses": ["Here are our hours! 🕒 Monday: 7:30am - 7:00pm Tuesday - Wednesday: 7:30am - 6:00pm Thursday: 7:30am - 7:00pm Friday: 7:30am - 10:00pm Saturday: 8:30am - 7:00pm Sunday: 9:00am - 4:00pm We're closed on major holidays. Need specific holiday hours?"]
+      "patterns": ["hours", "when are you open", "opening hours", "business hours", "what time do you open"],
+      "responses": ["Here are our hours:", "We're open at these times:"]
     },
     {
-      "tag": "menu",
-      "patterns": ["menu", "drinks", "food", "what do you serve", "coffee", "latte", "cappuccino", "show menu", "menu options", "what can i order", "food menu", "drink menu"],
-      "responses": ["Certainly! Here are some popular options to help you decide: Order Drinks or Snacks ☕ Drinks: - Hot Coffee, Lattes, Cappuccinos, Matcha ($3.50 - $6.50) - Iced Coffee, Cold Brew ($4.00 - $5.50) 🍪 Snacks: - Croissants, Avocado Toast, Breakfast Sandwich ($3.50 - $8.00) For our complete menu with all options and special items, visit our DoorDash page: https://www.doordash.com/store/common-good-harlem-new-york-24627565/58781546/ Ready to start an order or want to know more about a specific item?"]
+      "tag": "location",
+      "patterns": ["where are you", "location", "address", "how to get there", "directions"],
+      "responses": ["We're located at:", "You can find us at:"]
     },
     {
-      "tag": "events",
-      "patterns": ["events", "music", "live", "performances", "what's happening", "calendar", "event info", "upcoming events", "show events", "events happening"],
-      "responses": ["Absolutely! We have some exciting events coming up: 🎵 Upcoming Events: - Live Music: Friday 7-9 PM (Jazz Night) - Poetry Night: Saturday 6-8 PM - Community Meetup: Sunday 2-4 PM Want to know more or Register for an event?"]
+      "tag": "contact",
+      "patterns": ["contact", "phone number", "how to reach you", "call you", "email"],
+      "responses": ["Here's how you can reach us:", "You can contact us at:"]
     },
     {
-      "tag": "reservation",
-      "patterns": ["reserve", "reservation", "book", "table", "seating"],
-      "responses": ["We accept walk-ins only, but I can help you find the best time to visit! 🪑 Our busiest hours are: - Weekday mornings: 8-10 AM - Weekend afternoons: 2-4 PM Would you like to know more about our seating options?"]
+      "tag": "greeting",
+      "patterns": ["hi", "hello", "hey", "good morning", "good afternoon"],
+      "responses": ["Hi there! 👋 I'm HazelBot — your virtual barista at Common Good Harlem. Here to help you with drinks, events, or anything else. What would you like to do?"]
     },
     {
       "tag": "volunteer",
@@ -184,11 +401,6 @@
       "responses": ["I'd be happy to recommend something! 🎯\n\nBased on your preferences and the time of day, here are some suggestions:\n\n{recommendations}\n\nWould you like to know more about any of these items?"]
     },
     {
-      "tag": "order_status",
-      "patterns": ["order status", "where is my order", "is my order ready", "order number", "track order", "check order", "my order status"],
-      "responses": ["I can help you check your order status! 📱 {order_status} Would you like to know more about your order?"]
-    },
-    {
       "tag": "dining_greeting",
       "patterns": ["hi", "hello", "hey", "good morning", "good afternoon", "good evening"],
       "responses": ["Welcome to Common Good Harlem! 👋 I'm your virtual waiter. Would you like to dine in or order to go?", "Hello! Welcome to Common Good Harlem! 👋 I'll be your virtual waiter today. Are you dining in or ordering to go?"]
@@ -214,11 +426,6 @@
       "responses": ["Welcome to your table! 🪑 I'm your virtual waiter. Would you like to start with some drinks? We have: - Water (still or sparkling) - Coffee - Tea - Fresh juices Or would you like to see our full menu?"]
     },
     {
-      "tag": "start_order",
-      "patterns": ["ready to order", "take order", "order food", "what do you have"],
-      "responses": ["I'll help you with your order. We have several categories: 1. Appetizers 2. Main Courses 3. Sides 4. Desserts 5. Drinks Which category would you like to see first?"]
-    },
-    {
       "tag": "appetizers",
       "patterns": ["appetizers", "starters", "begin with", "first course"],
       "responses": ["Here are our appetizers: - Avocado Toast ($8.00) - House Salad ($7.00) - Soup of the Day ($6.00) - Charcuterie Board ($12.00) Would you like to try any of these? Or shall we move on to main courses?"]
@@ -232,11 +439,6 @@
       "tag": "drinks",
       "patterns": ["drinks", "beverages", "something to drink", "coffee", "tea"],
       "responses": ["Here are our drink options: Hot Drinks: - Coffee ($3.50) - Latte ($4.50) - Cappuccino ($4.00) - Tea ($3.00) Cold Drinks: - Iced Coffee ($4.00) - Fresh Juice ($5.00) - Sparkling Water ($3.00) What would you like to try?"]
-    },
-    {
-      "tag": "add_to_order",
-      "patterns": ["add", "order", "get", "want", "would like"],
-      "responses": ["I'll add {item} to your order. Would you like to add anything else? Your current total is ${total}."]
     },
     {
       "tag": "check_total",
@@ -253,5 +455,39 @@
       "patterns": ["feedback", "review", "experience", "how was it"],
       "responses": ["Thank you for dining with us! How was your experience today? You can: 1. Rate us on Google/Yelp 2. Fill out our feedback form 3. Share your thoughts with our manager Your feedback helps us improve!"]
     }
-  ]
+  ],
+  "order_flows": {
+    "signature_drinks": {
+      "response": "Our signature drinks are:\n\n☕ Hot Drinks:\n- Latte: Small: $3.50, Medium: $4.00, Large: $4.50\n- Cappuccino: Small: $3.00, Medium: $3.50, Large: $4.00\n\n🥤 Cold Drinks:\n- Iced Coffee: Small: $3.00, Medium: $3.50, Large: $4.00\n- Frappuccino: Small: $4.00, Medium: $4.50, Large: $5.00\n\nWould you like to try any of these?",
+      "quickReplies": ["Latte", "Cappuccino", "Iced Coffee", "Frappuccino", "See Full Menu"]
+    },
+    "complete_order": {
+      "response": "Your order is complete! Thank you for your order.",
+      "quickReplies": ["Start New Order", "View Menu", "Check Hours"]
+    },
+    "cancel_order": {
+      "response": "Your order has been cancelled. Would you like to start a new order?",
+      "quickReplies": ["Start New Order", "View Menu"]
+    },
+    "check_total": {
+      "response": "Your current total is $0.00. Would you like to add anything else before completing your order?",
+      "quickReplies": ["Add Another Item", "Complete Order", "Cancel Order"]
+    },
+    "add_item": {
+      "response": "What would you like to add to your order? You can say the name of any menu item.",
+      "quickReplies": ["Show Menu", "Complete Order", "Cancel Order"]
+    },
+    "new_order": {
+      "response": "Great! I've started a new order for you. What would you like to add to your order?",
+      "quickReplies": ["Show Menu", "Hot Drinks", "Cold Drinks", "Food", "Signature Drinks"]
+    },
+    "checkout": {
+      "response": "Ready to checkout! Payment options: Credit/Debit Cards, Apple Pay, Google Pay, Cash, Venmo. How would you like to pay?",
+      "quickReplies": ["Pay with Card", "Pay with Apple Pay", "Pay with Cash", "Cancel Order"]
+    },
+    "view_order": {
+      "response": "Current Order: No items yet. What would you like to do?",
+      "quickReplies": ["Add Another Item", "Checkout", "Cancel Order", "Show Menu"]
+    }
+  }
 } 

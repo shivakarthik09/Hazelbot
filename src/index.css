@@ -12,8 +12,9 @@ code {
     monospace;
 }
 
-#root {
-  height: 100vh;
+html, body, #root {
+  height: 100%;
+  min-height: 0;
 }
 
 .quick-reply-chip {

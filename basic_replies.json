@@ -1,0 +1,18 @@
+{
+  "greetings": {
+    "response": "Hello! How can I help you today?",
+    "quickReplies": ["Menu", "Order", "Hours", "Location", "Contact Us"]
+  },
+  "farewell": {
+    "response": "Thank you for chatting with us! Have a great day!",
+    "quickReplies": ["Menu", "Order", "Hours", "Location", "Contact Us"]
+  },
+  "help": {
+    "response": "I can help you with the menu, placing an order, checking hours, or finding our location. What would you like to know?",
+    "quickReplies": ["Menu", "Order", "Hours", "Location", "Contact Us"]
+  },
+  "unknown": {
+    "response": "I'm not sure I understand. Could you please rephrase or ask something else?",
+    "quickReplies": ["Menu", "Order", "Hours", "Location", "Contact Us"]
+  }
+} 

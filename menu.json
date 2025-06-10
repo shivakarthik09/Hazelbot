@@ -1,0 +1,68 @@
+{
+  "drinks": [
+    {
+      "name": "Latte",
+      "price": {
+        "Small": 3.50,
+        "Medium": 4.00,
+        "Large": 4.50
+      },
+      "addons": ["Vanilla", "Caramel", "Hazelnut"],
+      "types": ["Hot", "Iced"],
+      "sizes": ["Small", "Medium", "Large"]
+    },
+    {
+      "name": "Cappuccino",
+      "price": {
+        "Small": 3.00,
+        "Medium": 3.50,
+        "Large": 4.00
+      },
+      "addons": ["Vanilla", "Caramel", "Hazelnut"],
+      "types": ["Hot", "Iced"],
+      "sizes": ["Small", "Medium", "Large"]
+    }
+  ],
+  "coldDrinks": [
+    {
+      "name": "Iced Coffee",
+      "price": {
+        "Small": 3.00,
+        "Medium": 3.50,
+        "Large": 4.00
+      },
+      "addons": ["Vanilla", "Caramel", "Hazelnut"],
+      "types": ["Iced"],
+      "sizes": ["Small", "Medium", "Large"]
+    },
+    {
+      "name": "Frappuccino",
+      "price": {
+        "Small": 4.00,
+        "Medium": 4.50,
+        "Large": 5.00
+      },
+      "addons": ["Vanilla", "Caramel", "Hazelnut"],
+      "types": ["Iced"],
+      "sizes": ["Small", "Medium", "Large"]
+    }
+  ],
+  "food": [
+    {
+      "name": "Croissant",
+      "basePrice": 2.50,
+      "addons": ["Butter", "Jam"],
+      "types": ["Plain", "Chocolate", "Almond"],
+      "sizes": ["Regular"]
+    },
+    {
+      "name": "Sandwich",
+      "basePrice": 5.00,
+      "addons": ["Lettuce", "Tomato", "Cheese"],
+      "types": ["Chicken", "Vegetarian", "Beef"],
+      "sizes": ["Regular"],
+      "meat": ["Chicken", "Beef"],
+      "cheese": ["Cheddar", "Swiss", "Provolone"]
+    }
+  ]
+} 
